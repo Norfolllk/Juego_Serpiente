@@ -1,6 +1,7 @@
     // 1. Capturamos el lienzo y su contexto de dibujo
     const canvas = document.getElementById("canvasJuego");
     const ctx = canvas.getContext("2d");
+
     const TAMANIO_CELDA=25;
 
   dibujarTablero=function(){

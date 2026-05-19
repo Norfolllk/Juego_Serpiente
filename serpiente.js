@@ -19,6 +19,10 @@ let serpiente = [
   { x: (canvas.width / 2) / TAMANIO_CELDA,       y: (canvas.height / 2) / TAMANIO_CELDA + 1 }
 ];
 
+// =========================
+// FUNCIONES DE DIBUJO
+// =========================
+
 function dibujarTablero() {
     for (let i = 0; i < canvas.width; i += TAMANIO_CELDA) {
         ctx.strokeStyle = "grey";
@@ -56,6 +60,10 @@ function pintarSerpiente() {
         }
     }
 }
+    
+// =========================
+// FUNCIONES DE MOVIMIENTO
+// =========================
 
 function moverDerecha() {
     let cabezaActual = serpiente[0];
@@ -117,19 +125,9 @@ function cambiarDireccion(direccion) {
     }
 }
 
-function iniciarJuego() {
-    if (juegoFinalizado == true) {
-        return;
-    }
-    document.getElementById("estado").innerHTML = "Jugando";
-    document.getElementById("mensaje").innerHTML = "¡Que la serpiente no se choque!";
-    intervaloSerpiente = setInterval(moverSerpiente, velocidad);  //Velicidad
-}
-
-function pausarJuego() {
-    clearInterval(intervaloSerpiente);
-    document.getElementById("estado").innerHTML = "Pausado";
-}
+// =========================
+// LÓGICA DEL JUEGO
+// =========================
 
 function moverSerpiente() {
     if (proximaDireccion) {
@@ -250,6 +248,24 @@ function generarComida() {
 
 function pintarComida() {
     pintarParte(ComidaX, ComidaY, "yellow");
+}
+
+// =========================
+// LÓGICA DEL JUEGO
+// =========================
+
+function iniciarJuego() {
+    if (juegoFinalizado == true) {
+        return;
+    }
+    document.getElementById("estado").innerHTML = "Jugando";
+    document.getElementById("mensaje").innerHTML = "¡Que la serpiente no se choque!";
+    intervaloSerpiente = setInterval(moverSerpiente, velocidad);  //Velicidad
+}
+
+function pausarJuego() {
+    clearInterval(intervaloSerpiente);
+    document.getElementById("estado").innerHTML = "Pausado";
 }
 
 function atraparComida() {
